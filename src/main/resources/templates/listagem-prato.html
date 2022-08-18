@@ -1,0 +1,56 @@
+<!DOCTYPE html> <!-- HTML 5 -->
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Listagem</title>
+
+
+
+</head>
+
+<body>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">Codigo</th>
+				<th scope="col">Nome</th>
+				<th scope="col">Preço</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="prato: ${listaPratos}">
+				<td th:text="${prato.codigo}"></td>
+				<td th:text="${prato.nome}"></td>
+				<td th:text="${prato.preco}"></td>
+				
+				
+				<td> <a th:href="@{/prato/excluir/{codigo}(codigo = ${prato.codigo})}" class="btn btn-danger">
+				 Excluir</a></td>
+				<td> <a th:href="@{/prato/atualizar/{codigo}(codigo = ${prato.codigo})}" class="btn btn-primary">
+				 Atualizar </a></td>
+				 
+				<td> <img width="100" height="100" th:src="@{'/images/'+${prato.nome}+.png}"></td>
+				
+			</tr>
+
+			<div class="px-4 py-3 my-5 text-center">
+   
+    <h1 class="display-5 fw-bold">Iguatu Massas</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-1">Área Administrativa - Lista de Pratos cadastrados</p>
+    </div>
+  </div>
+
+		</tbody>
+	</table>
+
+
+	<script src="/js/bootstrap.min.js"> </script>
+</body>
+
+</html>
